@@ -23,11 +23,11 @@
 }
 
 .budget-table thead th:nth-child(1) {
-    background-color: #ff6961; /* Pastelno crvena za zaglavlje prihoda */
+    background-color: #77dd77; /* Pastelno crvena za zaglavlje prihoda */
 }
 
 .budget-table thead th:nth-child(2) {
-    background-color: #77dd77; /* Pastelno zelena za zaglavlje rashoda */
+    background-color: #ff6961; /* Pastelno zelena za zaglavlje rashoda */
 }
 
 .budget-table td {
