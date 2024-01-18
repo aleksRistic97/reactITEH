@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import './BudgetTable.css';
+import TableRow from './TableRow';
 
 const BudgetTable = () => {
     const [transactions, setTransactions] = useState([
@@ -18,23 +19,14 @@ const BudgetTable = () => {
     ]);
     
 
-    const incomeRows = transactions.filter(t => t.type === 'income').map((transaction, index) => (
-        <tr key={transaction.id}>
-          <td style={{ color: 'green' }}>+{transaction.amount} RSD</td>
-            <td>{transaction.name}</td>
-            <td>{transaction.date}</td>
-            <td>{transaction.description}</td>
-        </tr>
-    ));
+    const incomeRows = transactions
+        .filter(t => t.type === 'income')
+        .map(transaction => <TableRow key={transaction.id} transaction={transaction} />);
 
-    const expenseRows = transactions.filter(t => t.type === 'expense').map((transaction, index) => (
-        <tr key={transaction.id}>
-             <td style={{ color: 'red' }}>-{transaction.amount} RSD</td>
-            <td>{transaction.name}</td>
-            <td>{transaction.date}</td>
-            <td>{transaction.description}</td>
-        </tr>
-    ));
+    const expenseRows = transactions
+        .filter(t => t.type === 'expense')
+        .map(transaction => <TableRow key={transaction.id} transaction={transaction} />);
+
 
     return (
         <div className="budget-table">
