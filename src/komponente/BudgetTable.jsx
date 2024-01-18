@@ -5,7 +5,7 @@ import Navbar from './Navbar';
 
 const BudgetTable = ({transactions, setTransactions}) => {
     const [searchText, setSearchText] = useState('');
-
+    const [sortOrder, setSortOrder] = useState('asc');
     const handleSearchChange = (e) => {
         setSearchText(e.target.value.toLowerCase());
     };
@@ -14,29 +14,35 @@ const BudgetTable = ({transactions, setTransactions}) => {
         transaction.name.toLowerCase().includes(searchText) ||
         transaction.description.toLowerCase().includes(searchText)
     );
+
+    const toggleSortOrder = () => {
+        setSortOrder(sortOrder === 'asc' ? 'desc' : 'asc');
+    };
+    
+    const sortedTransactions = filteredTransactions.sort((a, b) => {
+        if (sortOrder === 'asc') {
+            return a.amount - b.amount; // Za rastuće sortiranje
+        } else {
+            return b.amount - a.amount; // Za opadajuće sortiranje
+        }
+    });
+
     const deleteTransaction = (id) => {
         
         setTransactions(transactions.filter(transaction => transaction.id !== id));
     };
-        const incomeRows = filteredTransactions
-        .filter(t => t.type === 'income')
-        .map(transaction => (
-            <TableRow 
-                key={transaction.id} 
-                transaction={transaction} 
-                onDelete={deleteTransaction} 
-            />
-        ));
+    const incomeRows = sortedTransactions
+    .filter(t => t.type === 'income')
+    .map(transaction => (
+        <TableRow key={transaction.id} transaction={transaction} onDelete={deleteTransaction} />
+    ));
 
-    const expenseRows = filteredTransactions
+    const expenseRows = sortedTransactions
         .filter(t => t.type === 'expense')
         .map(transaction => (
-            <TableRow 
-                key={transaction.id} 
-                transaction={transaction} 
-                onDelete={deleteTransaction} 
-            />
+            <TableRow key={transaction.id} transaction={transaction} onDelete={deleteTransaction} />
         ));
+
 
 
         const calculateTotal = (type) => {
@@ -60,6 +66,9 @@ const BudgetTable = ({transactions, setTransactions}) => {
                 onChange={handleSearchChange}
                 className="search-input"
             />
+            <button onClick={toggleSortOrder} className="sort-button">
+                Sortiraj {sortOrder === 'asc' ? '↓' : '↑'}
+            </button>
         </div>
         <div className="totals-container">
             <div className="total-income">Ukupni prihodi: {totalIncome} RSD</div>
