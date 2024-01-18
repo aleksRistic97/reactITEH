@@ -23,6 +23,18 @@ const BudgetTable = ({transactions, setTransactions}) => {
         .filter(t => t.type === 'expense')
         .map(transaction => <TableRow key={transaction.id} transaction={transaction} />);
 
+
+
+        const calculateTotal = (type) => {
+            return transactions
+                .filter(transaction => transaction.type === type)
+                .reduce((acc, transaction) => acc + Number(transaction.amount), 0);
+        };
+        
+        const totalIncome = calculateTotal('income');
+        const totalExpense = calculateTotal('expense');
+        const balance = totalIncome - totalExpense;
+        
     return (
         <>
         <Navbar />
@@ -34,6 +46,13 @@ const BudgetTable = ({transactions, setTransactions}) => {
                 onChange={handleSearchChange}
                 className="search-input"
             />
+        </div>
+        <div className="totals-container">
+            <div className="total-income">Ukupni prihodi: {totalIncome} RSD</div>
+            <div className="total-expense">Ukupni rashodi: {totalExpense} RSD</div>
+            <div className={`balance ${balance < 0 ? 'negative' : ''}`}>
+                Saldo: {balance} RSD
+            </div>
         </div>
         <div className="budget-table"> 
             <table>
