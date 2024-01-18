@@ -1,0 +1,57 @@
+ 
+.budget-table {
+   
+    position: absolute; /* Pozicioniranje da bismo mogli centrirati tabelu */
+    top: 50%; /* Pomeramo tabelu 50% od vrha */
+    left: 50%; /* Pomeramo tabelu 50% od leve strane */
+    transform: translate(-50%, -50%); /* Centriramo tabelu */
+    border-collapse: collapse;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Moderniji font */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Diskretna senka */
+    background-color: #f4f4f4; /* Neutralna pozadina */
+}
+
+.budget-table th, .budget-table td {
+    padding: 20px 15px; /* Više prostora unutar ćelija */
+    text-align: left;
+    border-bottom: 1px solid #ddd; /* Finije granice */
+}
+
+.budget-table th {
+    color: white; /* Bela za tekst u headeru */
+    font-size: 1.1em; /* Veći font za header */
+}
+
+.budget-table thead th:nth-child(1) {
+    background-color: #ff6961; /* Pastelno crvena za zaglavlje prihoda */
+}
+
+.budget-table thead th:nth-child(2) {
+    background-color: #77dd77; /* Pastelno zelena za zaglavlje rashoda */
+}
+
+.budget-table td {
+    color: #333; /* Tamniji tekst za bolju čitljivost */
+    background-color: #fff; /* Bela pozadina za redove */
+}
+
+.budget-table tr:nth-child(even) {
+    background-color: #eaeaea; /* Naizmenične boje za redove */
+}
+
+.budget-table tr:hover {
+    background-color: #ccc; /* Boja prilikom prelaska mišem */
+    cursor: pointer; /* Promena kursora da sugeriše interaktivnost */
+}
+
+/* Dodajemo stilove za mobilne uređaje */
+@media screen and (max-width: 768px) {
+    .budget-table {
+        width: 95%; /* Šira tabela na manjim ekranima */
+        height: auto; /* Auto visina za mobilne uređaje */
+        position: relative; /* Relativno pozicioniranje za mobilne */
+        top: auto; /* Vraćamo na auto za mobilne uređaje */
+        left: auto; /* Vraćamo na auto za mobilne uređaje */
+        transform: none; /* Uklanjamo transformaciju za mobilne */
+    }
+}
