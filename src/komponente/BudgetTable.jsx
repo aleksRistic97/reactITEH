@@ -14,15 +14,29 @@ const BudgetTable = ({transactions, setTransactions}) => {
         transaction.name.toLowerCase().includes(searchText) ||
         transaction.description.toLowerCase().includes(searchText)
     );
-
-    const incomeRows = filteredTransactions
+    const deleteTransaction = (id) => {
+        
+        setTransactions(transactions.filter(transaction => transaction.id !== id));
+    };
+        const incomeRows = filteredTransactions
         .filter(t => t.type === 'income')
-        .map(transaction => <TableRow key={transaction.id} transaction={transaction} />);
+        .map(transaction => (
+            <TableRow 
+                key={transaction.id} 
+                transaction={transaction} 
+                onDelete={deleteTransaction} 
+            />
+        ));
 
     const expenseRows = filteredTransactions
         .filter(t => t.type === 'expense')
-        .map(transaction => <TableRow key={transaction.id} transaction={transaction} />);
-
+        .map(transaction => (
+            <TableRow 
+                key={transaction.id} 
+                transaction={transaction} 
+                onDelete={deleteTransaction} 
+            />
+        ));
 
 
         const calculateTotal = (type) => {

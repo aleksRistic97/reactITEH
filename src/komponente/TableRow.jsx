@@ -1,7 +1,7 @@
  
 import React from 'react';
-
-const TableRow = ({ transaction }) => {
+import { MdDelete } from "react-icons/md";
+const TableRow = ({ transaction,onDelete  }) => {
     const { id, name, date, description, type, amount } = transaction;
     const amountStyle = type === 'income' ? { color: 'green' } : { color: 'red' };
     const amountSign = type === 'income' ? '+' : '-';
@@ -12,6 +12,9 @@ const TableRow = ({ transaction }) => {
             <td>{name}</td>
             <td>{date}</td>
             <td>{description}</td>
+            <td>
+                <button onClick={() => onDelete(transaction.id)}><MdDelete /></button>
+            </td>
         </tr>
     );
 };

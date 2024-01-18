@@ -2,7 +2,7 @@
 .budget-table {
    
     position: absolute; /* Pozicioniranje da bismo mogli centrirati tabelu */
-    top: 50%; /* Pomeramo tabelu 50% od vrha */
+    top: 60%; /* Pomeramo tabelu 60% od vrha */
     left: 50%; /* Pomeramo tabelu 50% od leve strane */
     transform: translate(-50%, -50%); /* Centriramo tabelu */
     border-collapse: collapse;
@@ -67,4 +67,39 @@
     width: 300px;  
     border-radius: 4px;
     border: 1px solid #ddd;
+}
+.totals-container {
+    display: flex;
+    justify-content: space-around;
+    padding: 15px 0;
+}
+
+.total-income {
+    color: #4CAF50;  
+}
+
+.total-expense {
+    color: #f44336;  
+}
+
+.balance {
+    color: #2196F3;  
+}
+ 
+.balance.negative {
+    color: #f44336;
+}
+
+button {
+    padding: 5px 10px;
+    margin-left: 10px;
+    background-color: red;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+button:hover {
+    opacity: 0.8;
 }
