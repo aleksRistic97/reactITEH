@@ -1,6 +1,7 @@
  
 import React, { useState } from 'react';
 import './Dodaj.css';
+import Navbar from './Navbar';
 const Dodaj = ({ transactions, setTransactions }) => {
     const [newTransaction, setNewTransaction] = useState({
         name: '',
@@ -22,7 +23,10 @@ const Dodaj = ({ transactions, setTransactions }) => {
         setNewTransaction({ name: '', date: '', description: '', type: 'income', amount: '' }); // Reset forme
     };
     return (
+        <>
+        <Navbar></Navbar>
         <div className="new-transaction-form">
+            
         <form onSubmit={handleSubmit}>
             <input
                 type="text"
@@ -61,7 +65,7 @@ const Dodaj = ({ transactions, setTransactions }) => {
             />
             <button type="submit">Dodaj transakciju</button>
         </form>
-    </div>
+    </div></>
     );
 };
 

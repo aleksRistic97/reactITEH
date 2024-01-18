@@ -1,0 +1,20 @@
+ 
+.navbar {
+    background-color: #333; /* Tamna pozadina za navbar */
+    overflow: hidden; /* Ako linkovi pređu širinu ekrana */
+}
+
+.nav-link {
+    float: left; /* Poravnaj linkove u levo */
+    display: block; /* Napravi linkove block elementima */
+    color: white; /* Bela boja teksta */
+    text-align: center; /* Centriran tekst unutar linkova */
+    padding: 14px 16px; /* Padding za linkove */
+    text-decoration: none; /* Ukloni podvlačenje teksta */
+    font-size: 17px; /* Velika slova za tekst */
+}
+
+.nav-link:hover {
+    background-color: #ddd; /* Promeni boju pozadine kada je miš iznad linka */
+    color: black; /* Promeni boju teksta kada je miš iznad linka */
+}

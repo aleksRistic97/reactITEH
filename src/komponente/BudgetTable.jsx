@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import './BudgetTable.css';
 import TableRow from './TableRow';
+import Navbar from './Navbar';
 
 const BudgetTable = ({transactions, setTransactions}) => {
  
@@ -15,6 +16,8 @@ const BudgetTable = ({transactions, setTransactions}) => {
 
 
     return (
+        <>
+        <Navbar></Navbar>
         <div className="budget-table"> 
             <table>
                 <thead>
@@ -34,7 +37,7 @@ const BudgetTable = ({transactions, setTransactions}) => {
                     </tr>
                 </tbody>
             </table>
-        </div>
+        </div></>
     );
 };
 
