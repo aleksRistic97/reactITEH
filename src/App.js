@@ -3,7 +3,7 @@ import './App.css';
 import BudgetTable from './komponente/BudgetTable';
 import { useState } from 'react';
 import Dodaj from './komponente/Dodaj';
-
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 function App() {
   const [transactions, setTransactions] = useState([
     { id: 1, name: 'Plata', date: '2024-01-10', description: 'Mesečna plata', type: 'income', amount: 50000 },
@@ -20,10 +20,14 @@ function App() {
     { id: 12, name: 'Osiguranje', date: '2024-01-30', description: 'Januarski račun', type: 'expense', amount: 8000 },
 ]);
   return (
+    <Router>
     <div className="App">
-      <BudgetTable transactions={transactions}  setTransactions={setTransactions}  ></BudgetTable>
-      <Dodaj transactions={transactions}  setTransactions={setTransactions}></Dodaj>
+      <Routes>
+        <Route path="/" element={<BudgetTable transactions={transactions} setTransactions={setTransactions} />} />
+        <Route path="/dodaj" element={<Dodaj transactions={transactions} setTransactions={setTransactions} />} />
+      </Routes>
     </div>
+  </Router>
   );
 }
 

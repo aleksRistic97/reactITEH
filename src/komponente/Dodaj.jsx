@@ -1,6 +1,6 @@
  
 import React, { useState } from 'react';
-
+import './Dodaj.css';
 const Dodaj = ({ transactions, setTransactions }) => {
     const [newTransaction, setNewTransaction] = useState({
         name: '',
