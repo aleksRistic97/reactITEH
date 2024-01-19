@@ -3,6 +3,9 @@
     background-color: rgba(200, 200, 200, 0.7); /* Providna siva pozadina */
     padding: 20px;
     margin-bottom: 20px; /* Razmak između forme i tabele */
+    margin-left:25%;
+    margin-right:25%;
+    margin-top:10%;
 }
 
 .new-transaction-form form {

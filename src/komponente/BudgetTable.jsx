@@ -57,7 +57,7 @@ const BudgetTable = ({transactions}) => {
                     className="search-input"
                 />
                 <button onClick={toggleSortOrder} className="sort-button">
-                    Sortiraj {sortOrder === 'asc' ? '↓' : '↑'}
+                    Sortiraj {sortOrder === 'desc' ? '↓' : '↑'}
                 </button>
             </div>
             <div className="totals-container">
